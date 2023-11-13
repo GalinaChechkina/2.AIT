@@ -39,7 +39,6 @@ public class ArchiveAppl {
                 }
                 case 2: {
                     System.out.println("List of your documents: ");
-
                     archive.printDocuments();
                     break;
                 }
@@ -52,6 +51,7 @@ public class ArchiveAppl {
                     return;
                 default: {
                     System.out.println("Wrong input.");
+                    break;
                 }
             }
         }

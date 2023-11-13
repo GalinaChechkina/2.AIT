@@ -1,4 +1,5 @@
 package practice.todolist_appl.model;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import practice.todolist_appl.model.Task;
 
@@ -9,13 +10,16 @@ public class Task implements Comparable<Task>{
     // fields
     private int id; // идентификатор
     private String task; // содержание задачи
-    private static int nextId;
+    private static int helpId; //нужен, чтобы id увеличивался на 1
+    private LocalDateTime time;
 
     // constructor
-    public Task(String task) { // совпадает с именем класса, ничего не возвращает и не void
-        this.id = nextId++;
+    public Task(String task, LocalDateTime time) {
+        this.id = helpId++;
         this.task = task;
-    }
+        this.time=time;
+    } // совпадает с именем класса, ничего не возвращает и не void
+
 
     public int getId() {
         return id;
@@ -29,10 +33,16 @@ public class Task implements Comparable<Task>{
     public void setTask(String task) {
         this.task = task;
     }
+    public LocalDateTime getTime() {
+        return time;
+    }
+    public void setTime(LocalDateTime time) {
+        this.time = time;
+    }
 
     @Override
     public String toString() { //печатаем не id, а номер задачи и задачу
-        return  (id + 1) + " : " + task;
+        return  (id+1)+ " : " +task+" | Time of creation: "+time;
     }
 
     @Override

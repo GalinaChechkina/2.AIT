@@ -44,6 +44,11 @@
       <sourceFolder url="file://$MODULE_DIR$/lesson_39/code" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lesson_40/code" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lesson_41/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lesson_42/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lesson_43/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lesson_44-45/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lesson_46/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lesson_47/code" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

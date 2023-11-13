@@ -3,6 +3,8 @@ package practice.archive.dao;
 import practice.archive.model.Doc;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.function.Predicate;
@@ -74,11 +76,11 @@ public class ArchiveImpl implements Archive{
         return findByPredicate(p-> p.getArchiveId()==archiveId);
     }
 
-    private Doc[]findByPredicate(Predicate<Doc>predicate){
-        Doc[]res= new Doc[size];
+    private Doc[]findByPredicate(Predicate<Doc>predicate){//предикат- это условие для поиска (оно сверху)
+        Doc[]res= new Doc[size];                          //здесь определяем массив для предиката
         int j=0;
         for (int i = 0; i < size; i++) {
-            if(predicate.test(docs[i])){
+            if(predicate.test(docs[i])){                //здесь вызываем единственный встроенный метод предиката - тест (он булеановский)
                 res[j++]=docs[i];
             }
         }
@@ -87,7 +89,14 @@ public class ArchiveImpl implements Archive{
 
     @Override
     public Doc[] getDocsBetweenDate(LocalDate dateFrom, LocalDate dateTo) {
-        return new Doc[0];
+        Doc pat = new Doc(0,Integer.MIN_VALUE, null, null, dateFrom.atStartOfDay());//почему не ноль?
+        //ввели объектную переменную, шаблон
+        int from = -Arrays.binarySearch(docs, 0, size, pat, comparator) - 1;//находим индекс начального фото левый
+        // край from = from>=0 ? from : -from-1;
+        pat = new Doc(0, Integer.MAX_VALUE, null, null, LocalDateTime.of(dateTo, LocalTime.MAX));// находим правый край
+        int to = -Arrays.binarySearch(docs, 0, size, pat, comparator) - 1;
+        // to = to >=0 ? to : -to-1;
+        return Arrays.copyOfRange(docs, from, to);// диапазон, создаем новый массив с нужными документами;
     }
 
     @Override

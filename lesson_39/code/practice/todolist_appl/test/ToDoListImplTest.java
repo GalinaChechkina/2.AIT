@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import practice.todolist_appl.dao.ToDoListImpl;
 import practice.todolist_appl.model.Task;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ToDoListImplTest {
@@ -14,11 +16,13 @@ class ToDoListImplTest {
 
     @BeforeEach
     void setUp() {
-        toDoList=new ToDoListImpl(4);
-        tasks=new Task[3];
-        tasks[0]=new Task("Do homework");
-        tasks[1]=new Task("Bay products");
-        tasks[2]=new Task("Pick up the child from school");
+        toDoList=new ToDoListImpl(6);
+        tasks=new Task[5];
+        tasks[0]=new Task("Do homework", LocalDateTime.now());
+        tasks[1]=new Task("Bay products",LocalDateTime.now());
+        tasks[2]=new Task("Pick up the child from school",LocalDateTime.now());
+        tasks[3]=new Task("Auto",LocalDateTime.now());
+        tasks[4]=new Task("Nails",LocalDateTime.now());
         for (int i = 0; i < tasks.length; i++) {
             toDoList.addTask(tasks[i]);
         }
@@ -29,11 +33,11 @@ class ToDoListImplTest {
     void addTask() {
         assertFalse(toDoList.addTask(null));
         assertFalse(toDoList.addTask(tasks[0]));
-        Task task1=new Task("Meet a friend");
+        Task task1=new Task("Meet a friend",LocalDateTime.now());
         assertTrue(toDoList.addTask(task1));
         toDoList.printTasks();
         assertEquals(4,toDoList.quantity());
-        Task task2=new Task("Pay a fine");
+        Task task2=new Task("Pay a fine",LocalDateTime.now());
         assertFalse(toDoList.addTask(task2));
     }
 
@@ -41,8 +45,8 @@ class ToDoListImplTest {
     void removeTask() {
         assertEquals(tasks[1],toDoList.removeTask(1));
         toDoList.printTasks();
-        assertEquals(2,toDoList.quantity());
-        assertEquals(null,toDoList.removeTask(7));
+        assertEquals(4,toDoList.quantity());
+        assertNull(toDoList.removeTask(7));
 
     }
 

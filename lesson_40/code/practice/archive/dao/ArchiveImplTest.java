@@ -71,10 +71,13 @@ class ArchiveImplTest {
     @Test
     void getDocsBetweenDate() {
         LocalDate ld= now.toLocalDate();
-        Doc[]act= archive.getDocsBetweenDate(ld.minusDays(1),ld.minusDays(3));
+        Doc[]act= archive.getDocsBetweenDate(ld.minusDays(3),ld.minusDays(1));
+        for (int i = 0; i < act.length; i++) {
+            System.out.println(act[i]);
+        }
         Arrays.sort(act);
-        Doc[]exp= {docs[0],docs[1]};
-        assertArrayEquals(exp,act);
+        Doc[]exp= {docs[0],docs[1],docs[2]};
+            assertArrayEquals(exp,act);
 
     }
 
