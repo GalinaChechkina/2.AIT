@@ -4,8 +4,9 @@ public class SalesManager extends Employee{
     private double salesValue;
     private double percent;
 
-    public SalesManager(int id, String firstName, String lastName, int age, double hours, double salesValue, double percent) {
-        super(id, firstName, lastName, age, hours);
+    public SalesManager(int id, String firstName, String lastName, int age,
+                        double hours,int workExp,String education, double salesValue, double percent) {
+        super(id, firstName, lastName, age, hours, workExp, education);
         this.salesValue = salesValue;
         this.percent = percent;
     }

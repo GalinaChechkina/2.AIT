@@ -1,13 +1,17 @@
 package practice.todolist_appl.model;
 
-public enum Menu {
-    ADD(1, "Add"),SHOWLIST(2, "Show List"),
-    REMOVE(3, "Remove"), EXIT(4, "Exit");
+import java.io.Serializable;
+
+public enum Menu implements Serializable {
+    ADD(1, "Add task"), LIST(2, "List of tasks"),
+    REMOVE(3, "Remove task"), SAVE(4, "Save"),
+    LOAD(5, "Load"), EXIT(6, "Exit");
+
 
     private int menuItem;
     private String action;
 
-    // constructor
+
     Menu(int menuItem, String action) {
         this.menuItem = menuItem;
         this.action = action;
@@ -16,8 +20,8 @@ public enum Menu {
 
     public static void printMenu(){
         Menu[] menu = Menu.values();
-        for (int i = 0; i < Menu.values().length; i++) {
-            System.out.print((menu[i].menuItem) + " - " + menu[i] + " | ");
+        for (int i = 0; i < menu.length; i++) {
+            System.out.print((menu[i].menuItem) + " - " + menu[i].action + " | ");
         }
         System.out.println();
     }

@@ -22,7 +22,7 @@ public class IListImpl<E> implements IList<E> {
         return size;
     }
     @Override
-    public void clean() {
+    public void clean() {  //O(n)
         for (int i = 0; i < size; i++) {
             elements[i] = null;
         }
@@ -47,16 +47,16 @@ public class IListImpl<E> implements IList<E> {
         }
     }
     @Override
-    public boolean add(int index, E element) {
+    public boolean add(int index, E element) { //O(n)
         if (index == size) { // добавление в конец списка
             add(element);
             return true;
         }
                              // добавление в середину списка
-        checkIndex(index);
-        ensureCapacity();
-        System.arraycopy(elements, index, elements, index + 1, size++ - index);
-        elements[index] = element;
+        checkIndex(index);   // O(1)
+        ensureCapacity();    // O(n)
+        System.arraycopy(elements, index, elements, index + 1, size++ - index); //O(n)
+        elements[index] = element;  //O(1)
         return true;
     }
     private void checkIndex(int index) {

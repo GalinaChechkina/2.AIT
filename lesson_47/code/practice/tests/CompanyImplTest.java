@@ -3,6 +3,7 @@ package practice.tests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import practice.dao.Company;
+import practice.dao.CompanyArrayListImpl;
 import practice.dao.CompanyImpl;
 import practice.model.Employee;
 import practice.model.Manager;
@@ -19,14 +20,13 @@ class CompanyImplTest {
 
     @BeforeEach
     void setUp() {
-        Company company = new CompanyImpl(5);
+        company = new CompanyArrayListImpl(5);
         e = new Employee[4];
-        e[0] = new Manager(101, "John", "Smith", 45, 160, 5000, 5);
-        e[1] = new SalesManager(102, "Anna", "Black", 36, 160, 25000, 0.1);
-        e[2] = new SalesManager(103, "Thomas", "White", 28, 160, 30000, 0.1);
-        e[3] = new Worker(104, "Gans", "Bauer", 30, 80, 5);
+        e[0] = new Manager(101, "John", "Smith", 45, 160,20,"1 PHD", 5000, 5);
+        e[1] = new SalesManager(102, "Anna", "Black", 36, 160,7,"2 Master", 25000, 0.1);
+        e[2] = new SalesManager(103, "Thomas", "White", 28, 160,2,"3 Bachelor", 30000, 0.1);
+        e[3] = new Worker(104, "Gans", "Bauer", 30, 80,11,"4 Ausbildung", 5);
 
-        // добавим элементы массива в company
         for (int i = 0; i < e.length; i++) {
             company.addEmployee(e[i]);
         }
@@ -34,37 +34,38 @@ class CompanyImplTest {
 
     @Test
     void addEmployee() {
-        // не можем добавить null - пустой объект
+
         assertFalse(company.addEmployee(null));
-        // не можем добавить второй раз, уже существующего работника
+
         assertFalse(company.addEmployee(e[1]));
-        Employee employee1 = new Manager(105, "Ivan", "Dubin", 55, 160, 6000, 6); // создали нового сотрудника
-        assertTrue(company.addEmployee(employee1)); // добавили нового сотрудника
-        assertEquals(5, company.quantity()); // теперь в компании 5 сотрудников
-        // создаем еще одного нового
-        Employee employee2 = new Manager(106, "Peter", "Dubin", 55, 160, 6000, 6); // создали нового сотрудника
-        assertFalse(company.addEmployee(employee2)); // не можем превысить capacity
+        Employee employee1 = new Manager(105, "Ivan", "Dubin", 55, 160, 30,"3 Bachelor",6000, 6);
+        assertTrue(company.addEmployee(employee1));
+        assertEquals(5, company.quantity());
+
+        Employee employee2 = new Manager(106, "Peter", "Dubin", 55, 160, 25,"1 PHD",6000, 6);
+        assertFalse(company.addEmployee(employee2));
         company.printEmployees();
     }
 
     @Test
     void removeEmployee() {
-        // удаляем сотрудника
+
         company.printEmployees();
         System.out.println("---------------------");
+
         assertEquals(e[1], company.removeEmployee(102));
-        assertEquals(3, company.quantity()); // сотрудников стало на 1 меньше (4 - 1)
-        assertNull(company.removeEmployee(102)); // дважды не можем удалить
-        assertNull(company.findEmployee(102)); // не можем найти после удаления
+        assertEquals(3, company.quantity());
+        assertNull(company.removeEmployee(102));
+        assertNull(company.findEmployee(102));
         company.printEmployees();
     }
 
     @Test
     void findEmployee() {
         company.printEmployees();
-        // ищем сотрудника по id
+
         assertEquals(e[1], company.findEmployee(102));
-        // ищем несуществующего сотрудника
+
         assertNull(company.findEmployee(105));
     }
 

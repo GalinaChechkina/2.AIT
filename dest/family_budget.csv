@@ -1,0 +1,31 @@
+id,date,cost,store,person,product,price,quantity
+1,01.12.2023,280.00,flexispot,Papa,desk,280.00,1
+2,03.12.2023,220.00,CA,Mama,Jeans,220.00,2
+3,23.11.2023,6 000.00,Saturn,Papa,Laptop,6 000.00,1
+4,04.12.2023,1.89,Lidl,Mama,Oil,1.89,1
+5,07.12.2023,1.25,Netto,Mama,Milk,1.25,1
+6,01.12.2023,3.17,Rewe,Mama,Milk,0.99,2
+7,01.12.2023,1.19,Penny,daughter,Bread,1.19,1
+8,15.11.2023,200.0,MediaMarkt,son,Calculator,200.00,1
+9,16.11.2023,35.00,Rewe,papa,Whiskey,35.00,1
+10,14.12.2023,500.00,MediaMarkt,Son,PlayStation 5,500.00,1
+11,14.12.2023,5.00,Bauhaus,Papa,Scotch tape,5.00,2
+12,15.12.2023,9.99,Edeka,Papa,Beer,3.33,3
+13,11.12.2023,29.99,Apotheka,Papa,Tabletten,29.99,1
+14,02.12.2023,39.99,Zara,Mama,Jeans,39.99,1
+15,03.12.2023,21.98,Lidl,papa,products,21.98,1
+16,04.12.2023,500.00,Zara,Mama,NY presents,500.00,1
+17,15.12.2023,200.00,MediaMarkt,Mama,Tablet,250.00,1
+18,06.12.2023,4.00,Aldi,papa,Пиво,4.00,1
+19,31.12.2024,1 500.00,MediaMarkt,daughter,iphone15,1 500.00,1
+20,05.12.2023,50.00,Lidl,papa,vine1,6.00,1
+20,05.12.2023,50.00,Lidl,papa,vodka,9.50,1
+20,05.12.2023,50.00,Lidl,papa,vine2,8.50,2
+20,05.12.2023,50.00,Lidl,papa,tort,17.50,1
+20,05.12.2023,50.00,Lidl,papa,toys,8.50,1
+21,10.11.2023,4.50,Amazon,daughter,pepel of album,4.50,1
+22,11.11.2023,7.00,Jumbo,papa,vine,7.00,1
+23,12.11.2023,1.99,Jumbo,papa,bread,1.99,1
+24,13.11.2023,3.25,Jumbo,papa,yogurt,3.25,1
+25,14.12.2023,20.00,Christmas market,daughter,present,20.00,1
+26,05.12.2023,50.00,Lidl,papa,condoms,5.00,100

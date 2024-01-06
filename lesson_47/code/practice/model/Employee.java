@@ -1,19 +1,25 @@
 package practice.model;
 
 public abstract class Employee {
+
     protected final int id;
     protected String firstName;
     protected String lastName;
     protected int age;
     protected double hours;
+    protected int workExp;
+    protected String education;
+
 
     // конструктор
-    public Employee(int id, String firstName, String lastName, int age, double hours) {
+    public Employee(int id, String firstName, String lastName, int age, double hours,int workExp,String education) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.hours = hours;
+        this.workExp = workExp;
+        this.education = education;
     }
     public int getId() {
         return id;
@@ -42,6 +48,18 @@ public abstract class Employee {
     public void setHours(double hours) {
         this.hours = hours;
     }
+    public int getWorkExp() {
+        return workExp;
+    }
+    public void setWorkExp(int workExp) {
+        this.workExp = workExp;
+    }
+    public String getEducation() {
+        return education;
+    }
+    public void setEducation(String education) {
+        this.education = education;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,6 +79,8 @@ public abstract class Employee {
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", hours=").append(hours);
         sb.append(", salary=").append(calcSalary());
+        sb.append(", workExp=").append(workExp);
+        sb.append(", education=").append(education).append('\'');
         return sb.toString();
     }
     public abstract double calcSalary(); // определили абстрактный метод (у него нет тела!)

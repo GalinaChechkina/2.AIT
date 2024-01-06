@@ -1,20 +1,17 @@
 package practice.todolist_appl.dao;
 import practice.todolist_appl.model.Task;
 
+import java.util.List;
+
 public interface ToDoList {
 
     // add Task
     boolean addTask(Task task);
-
-    //find Task
-    Task findTask(int id);
-
     // remove Task
-    Task removeTask(int id);
-
-    // show list of Tasks
-    void printTasks();
-
+    Task removeTask(int taskNumber);
+    // print list of Tasks
+    void viewTasks();
+    List<Task> getAllTasks();
     // quantity of tasks
     int quantity();
 }

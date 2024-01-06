@@ -1,69 +1,62 @@
 package practice.todolist_appl.dao;
 import practice.todolist_appl.model.Task;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
-public class ToDoListImpl implements ToDoList {
+public class ToDoListImpl implements ToDoList, Serializable {
 
-    private Task[] tasks;
-    private int capacity;
+    //fields
+    private List<Task> tasks;
     private int quantity;
-    private LocalDateTime time; //дата и время создания задачи
 
-    // constructor
-    public ToDoListImpl(int capacity){
-        tasks = new Task[capacity];
+    private LocalDateTime time;
+
+    public ToDoListImpl() {
+        tasks = new ArrayList<>();
         this.quantity = 0;
     }
 
     @Override
     public boolean addTask(Task task) {
-        if (task == null || quantity == tasks.length || findTask(task.getId())!=null) {
+        if (task == null) {
             return false;
         }
-        tasks[quantity] = task;
+        tasks.add(task);
         quantity++;
         return true;
     }
 
     @Override
-    public Task findTask(int id) {
-        for (int i = 0; i < quantity; i++) {
-            if(tasks[i].getId()==id){
-                return tasks[i];
-            }
+    public Task removeTask(int taskNumber) {
+        // find task by number=id+1 then remove, quantity--
+        if(taskNumber >= 1 && taskNumber < quantity) {
+            Task removed = tasks.get(taskNumber - 1 );
+            tasks.remove(removed);
+            quantity--;
+            return removed;
         }
+        System.out.println("Wrong task number");
         return null;
     }
 
-    @Override
-    public Task removeTask(int id) {
-        //удаляем элемент, сортируем массив
-        for (int i = 0; i < quantity; i++) {
-            if(tasks[i].getId()==(id-1)) {
-                tasks[i].setId(i+1);
-                Task removedTask = tasks[i];
-                for (int j = i; j < quantity; j++) {
-                    tasks[j].setId(j - 1);
-                }
-                System.arraycopy(tasks, i+1, tasks, i, quantity - i-1);
-                tasks[--quantity] = null;
-                return removedTask;
-            }
-        }
-        return null;
-    }
 
     @Override
-    public void printTasks() {
-
-        for (int i = 0; i < quantity; i++) {
-            System.out.println(tasks[i]);
+    public void viewTasks() {
+        // for loop, print tasks & quantity
+        for (Task task : tasks) {
+            System.out.println(tasks.indexOf(task) + 1 + ". " + task);
         }
         System.out.println("You have " + quantity + " tasks.");
-        System.out.println();
+    }
+
+    @Override
+    public List<Task> getAllTasks() {//сложили все задачи в лист с помощью стрима
+        return tasks.stream().toList();
     }
 
     @Override

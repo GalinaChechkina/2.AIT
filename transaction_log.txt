@@ -1,0 +1,5 @@
+Buy Transactions: 
+JPY: 14705.882352941177 | 
+
+Sell Transactions: 
+JPY: 0.62

@@ -3,6 +3,8 @@ import practice.dao.Company;
 import practice.model.Employee;
 import practice.model.SalesManager;
 
+import java.util.Comparator;
+
 public class CompanyImpl implements Company {
     private Employee[] employees;
     private int size;
@@ -17,7 +19,8 @@ public class CompanyImpl implements Company {
         if( employee == null || size == employees.length || findEmployee(employee.getId()) != null) {
             return false;
         }
-        employees[size++] = employee;
+        employees[size] = employee;
+        size++;
         return true;
     }
 
